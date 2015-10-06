@@ -46,3 +46,23 @@ type User_Event struct {
 	Timestamp int64
 	Data      string
 }
+
+// Data structure for holding product configuration. Each product will have its own configuration. Then we just
+// call that product on the commandline. Every value here is also represented via a commandline flag that will take preceence.
+type Config_Details struct {
+	Sensu struct {
+	}
+	Elasticsearch struct {
+		index []string
+	}
+	Slack struct {
+		Channel []string
+		Token   string
+	}
+	Pagerduty struct {
+	}
+	Statsd struct {
+	}
+	Mail struct {
+	}
+}
