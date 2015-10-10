@@ -32,12 +32,12 @@ func (e Sensu_Event) Acquire_monitored_instance() string {
 	return monitored_instance
 }
 
-func Set_time(t int) string {
-
-	timeStamp := time.Unix(unixIntValue, 0)
-	timestamp = time.Unix(timestamp, 0).Format(time.RFC822Z)
-
-}
+// func Set_time(t int) string {
+//
+// 	timeStamp := time.Unix(unixIntValue, 0)
+// 	timestamp = time.Unix(timestamp, 0).Format(time.RFC822Z)
+//
+// }
 
 // Set the environment that the machine is running in based upon values
 // dropped via Oahi during the Chef run.
