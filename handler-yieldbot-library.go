@@ -10,7 +10,7 @@ package dracky
 
 import (
 	"encoding/json"
-	"github/yieldbot/dhuran"
+	"github.com/yieldbot/dhuran"
 	"io/ioutil"
 	"os"
 )
@@ -30,6 +30,13 @@ func (e Sensu_Event) Acquire_monitored_instance() string {
 		monitored_instance = e.Client.Name
 	}
 	return monitored_instance
+}
+
+func Set_time(t int) string {
+
+	timeStamp := time.Unix(unixIntValue, 0)
+	timestamp = time.Unix(timestamp, 0).Format(time.RFC822Z)
+
 }
 
 // Set the environment that the machine is running in based upon values
