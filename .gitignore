@@ -4,6 +4,9 @@
 *.so
 
 # Folders
+.vagrant
+bin
+pkg
 _obj
 _test
 
