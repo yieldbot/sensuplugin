@@ -14,7 +14,6 @@ import (
 	"io/ioutil"
 	"os"
 	"strings"
-	"fmt"
 )
 
 // Generate a simple string for use by elasticsearch and internal logging of all monitoring alerts.
@@ -84,7 +83,6 @@ func Create_check_name(check string) string {
 	// I want something like check.cpu.user so that I can filter easily from specific to generic
 	// check-process-ntp-offset --> check.process.ntp.offset
 	fmtd_check := strings.Replace(check, "-", ".", -1)
-	fmt.Println(fmtd_check)
 	return fmtd_check
 }
 
