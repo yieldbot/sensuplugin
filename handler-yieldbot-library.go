@@ -13,6 +13,8 @@ import (
 	"github.com/yieldbot/dhuran"
 	"io/ioutil"
 	"os"
+	"strings"
+	"fmt"
 )
 
 // Generate a simple string for use by elasticsearch and internal logging of all monitoring alerts.
@@ -79,7 +81,11 @@ func Define_status(status int) string {
 // Creates a monitor name that is easliy searchable in ES using different
 // levels of granularity.
 func Create_check_name(check string) string {
-	return check
+	// I want something like check.cpu.user so that I can filter easily from specific to generic
+	// check-process-ntp-offset --> check.process.ntp.offset
+	fmtd_check = strings.Replace(check, "-", ".", 0)
+	fmt.Println(fmtd_check)
+	return fmtd_check
 }
 
 // Calculate how long a monitor has been in a given state.
