@@ -80,8 +80,6 @@ func Define_status(status int) string {
 // Creates a monitor name that is easliy searchable in ES using different
 // levels of granularity.
 func Create_check_name(check string) string {
-	// I want something like check.cpu.user so that I can filter easily from specific to generic
-	// check-process-ntp-offset --> check.process.ntp.offset
 	fmtd_check := strings.Replace(check, "-", ".", -1)
 	return fmtd_check
 }
