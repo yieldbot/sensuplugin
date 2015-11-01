@@ -83,7 +83,7 @@ func Define_status(status int) string {
 func Create_check_name(check string) string {
 	// I want something like check.cpu.user so that I can filter easily from specific to generic
 	// check-process-ntp-offset --> check.process.ntp.offset
-	fmtd_check = strings.Replace(check, "-", ".", 0)
+	fmtd_check := strings.Replace(check, "-", ".", 0)
 	fmt.Println(fmtd_check)
 	return fmtd_check
 }
