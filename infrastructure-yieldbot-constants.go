@@ -1,4 +1,4 @@
-// Library for all constants used in Yieldbot alert handlers and dashboard generators
+// Library for all constants used by the Yieldbot Infrastructure teams
 //
 // LICENSE:
 //   Copyright 2015 Yieldbot. <devops@yieldbot.com>
@@ -18,12 +18,6 @@ const (
 	DEFAULT_ES_HOST string = "localhost"
 )
 
-// Do we print debug statements or not. This is set in each binary but is placed here
-// to avoid the use of global variables
-var Debug bool
-
-// this is used to let the process -> pid function know how it will match the process name
-var Java_app bool
 
 // const {
 //  DEBUG bool = false

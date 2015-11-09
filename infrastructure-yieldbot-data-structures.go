@@ -1,4 +1,4 @@
-// Library for all data structures used in Yieldbot alert handlers and dashboard generators
+// Library for all data structures used by the Yieldbot Infrastructure teams
 //
 // LICENSE:
 //   Copyright 2015 Yieldbot. <devops@yieldbot.com>

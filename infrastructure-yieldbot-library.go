@@ -1,4 +1,4 @@
-// Library for all functions used in Yieldbot alert handlers and dashboard generators
+// Library for all functions used by the Yieldbot Infrastructure teams
 //
 // LICENSE:
 //   Copyright 2015 Yieldbot. <devops@yieldbot.com>
