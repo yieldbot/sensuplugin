@@ -116,7 +116,7 @@ func (e Sensu_Event) Acquire_sensu_event() *Sensu_Event {
 	return &e
 }
 
-/ Generic error handling for all Yieldbot alert and dashboard packages.
+// Generic error handling for all Yieldbot alert and dashboard packages.
 func Check(e error) {
 	if e != nil {
 		panic(e)
