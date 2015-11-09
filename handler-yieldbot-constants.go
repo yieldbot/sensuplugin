@@ -18,6 +18,12 @@ const (
 	DEFAULT_ES_HOST string = "localhost"
 )
 
+var Debug bool
+
+// const {
+//  DEBUG bool = false
+// }
+
 // create a map for sensu environments and read from that
 
 // Map of all known exit codes accepted by the monitoring stack
