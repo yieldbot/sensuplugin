@@ -23,7 +23,7 @@ const (
 var Debug bool
 
 // this is used to let the process -> pid function know how it will match the process name
-var java_app bool
+var Dava_app bool
 
 // const {
 //  DEBUG bool = false
