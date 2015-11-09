@@ -92,13 +92,13 @@ func Define_check_state_duration() string {
 func Set_sensu_env() *Env_Details {
 	env_file, err := ioutil.ReadFile(ENVIRONMENT_FILE)
 	if err != nil {
-		dracky.Check(err)
+		Check(err)
 	}
 
 	var env_details Env_Details
 	err = json.Unmarshal(env_file, &env_details)
 	if err != nil {
-		dracky.Check(err)
+		Check(err)
 	}
 	return &env_details
 }
@@ -107,11 +107,11 @@ func Set_sensu_env() *Env_Details {
 func (e Sensu_Event) Acquire_sensu_event() *Sensu_Event {
 	results, err := ioutil.ReadAll(os.Stdin)
 	if err != nil {
-		dracky.Check(err)
+		Check(err)
 	}
 	err = json.Unmarshal(results, &e)
 	if err != nil {
-		dracky.Check(err)
+		Check(err)
 	}
 	return &e
 }
