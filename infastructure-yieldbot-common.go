@@ -12,4 +12,4 @@ package dracky
 var Debug bool
 
 // this is used to let the process -> pid function know how it will match the process name
-var Java_app bool
+var JavaApp bool
