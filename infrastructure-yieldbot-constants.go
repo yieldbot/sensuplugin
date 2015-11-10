@@ -24,6 +24,7 @@ const (
 const (
   CONFIG_ERROR int = 127
   PERMISSION_ERROR int = 126
+  RUNTIME_ERROR int = 42
 )
 
 // const {
