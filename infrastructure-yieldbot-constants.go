@@ -22,7 +22,8 @@ const (
 // Please use the below codes instead of random non-zero so that monitoring can
 // utilize existing maps for alerting and help avoid unnecessary noise.
 const (
-  CONFIG int = 127
+  CONFIG_ERROR int = 127
+  PERMISSION_ERROR int = 126
 )
 
 // const {
