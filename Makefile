@@ -101,7 +101,7 @@ dist: build
 
 # run the golang formatting tool on all files in the current src directory
 format:
-	OUT=`gofmt -l .`; if [ "$OUT" ]; then echo $OUT; exit 1; fi
+	OUT=`gofmt -l .`; if [ "$$OUT" ]; then echo $$OUT; exit 1; fi
 
 # install the binary and any info docs locally for testing
 install:
@@ -126,7 +126,7 @@ info:
 
 # run the golang linting tool
 lint:
-	OUT=`golint ./...`; if [ "$OUT" ]; then echo $OUT; exit 1; fi
+	OUT=`golint ./...`; if [ "$$OUT" ]; then echo $$OUT; exit 1; fi
 
 maintainer-clean:
 	@echo "this needs to be implemented"
