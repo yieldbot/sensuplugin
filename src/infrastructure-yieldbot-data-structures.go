@@ -7,8 +7,8 @@
 
 package dracky
 
-// Data structure for holding Sensu generated check results.
-type Sensu_Event struct {
+// SensuEvent holds Sensu generated check results.
+type SensuEvent struct {
 	Action      string
 	Occurrences int
 	Client      struct {
@@ -31,8 +31,8 @@ type Sensu_Event struct {
 	}
 }
 
-// Data structure for holding environment variables provided by Oahi dropped via Chef.
-type Env_Details struct {
+// EnvDetails holds environment variables provided by Oahi dropped via Chef.
+type EnvDetails struct {
 	Sensu struct {
 		Environment string `json:"environment"`
 		FQDN        string `json:"fqdn"`
@@ -40,8 +40,8 @@ type Env_Details struct {
 	}
 }
 
-// Data structure for holding generic user data that is entered via an input file declared on the commndline.
-type User_Event struct {
+// UserEvent holds generic user data that is entered via an input file declared on the commndline.
+type UserEvent struct {
 	Product   string
 	Timestamp int64
 	Data      string

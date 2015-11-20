@@ -7,24 +7,24 @@
 
 package dracky
 
-// File that contains environmental details generated during the Chef run by Oahi.
-const ENVIRONMENT_FILE string = "/etc/sensu/conf.d/monitoring_infra.json"
+// EnvironmentFile contains environmental details generated during the Chef run by Oahi.
+const EnvironmentFile string = "/etc/sensu/conf.d/monitoring_infra.json"
 
 // Default values for connecting with and indexing Elasticsearch.
 const (
-	DEFAULT_ES_TYPE string = "sensu"
-	DEFAULT_ES_PORT string = "9200"
-	STATUS_ES_INDEX string = "monitoring-status"
-	DEFAULT_ES_HOST string = "localhost"
+	DefaultEsType string = "sensu"
+	DefaultEsPort string = "9200"
+	StatusEsIndex string = "monitoring-status"
+	DefaultEsHost string = "localhost"
 )
 
 // Error codes for applications.
 // Please use the below codes instead of random non-zero so that monitoring can
 // utilize existing maps for alerting and help avoid unnecessary noise.
 const (
-  CONFIG_ERROR int = 127
-  PERMISSION_ERROR int = 126
-  RUNTIME_ERROR int = 42
+	ConfigError      int = 127
+	PermissionError int = 126
+	RuntimeError     int = 42
 )
 
 // const {
