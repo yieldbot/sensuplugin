@@ -22,9 +22,9 @@ const (
 // Please use the below codes instead of random non-zero so that monitoring can
 // utilize existing maps for alerting and help avoid unnecessary noise.
 const (
-	ConfigError      int = 127
+	ConfigError     int = 127
 	PermissionError int = 126
-	RuntimeError     int = 42
+	RuntimeError    int = 42
 )
 
 // const {
