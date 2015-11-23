@@ -119,6 +119,7 @@ func (e SensuEvent) AcquireSensuEvent() *SensuEvent {
 // Check is for generic error handling in all Yieldbot alert and dashboard packages.
 func Check(e error) {
 	if e != nil {
+    fmt.Printf("%v", e)
 		panic(e)
 	}
 }
