@@ -13,6 +13,7 @@ import (
 	"io/ioutil"
 	"os"
 	"strings"
+  "fmt"
 )
 
 // EventName generates a simple string for use by elasticsearch and internal logging of all monitoring alerts.
