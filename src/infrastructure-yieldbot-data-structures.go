@@ -28,6 +28,7 @@ type SensuEvent struct {
 		Status      int
 		Handler     string
 		History     []string
+    Tags        []string
 	}
 }
 
