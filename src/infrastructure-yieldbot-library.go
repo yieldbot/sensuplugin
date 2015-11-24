@@ -85,7 +85,7 @@ func CreateCheckName(check string) string {
 }
 
 // DefineCheckStateDuration calculates how long a monitor has been in a given state.
-func DefineCheckStateDuration() string {
+func DefineCheckStateDuration() int {
 	return 1
 }
 
