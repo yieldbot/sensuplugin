@@ -86,7 +86,7 @@ func CreateCheckName(check string) string {
 
 // DefineCheckStateDuration calculates how long a monitor has been in a given state.
 func DefineCheckStateDuration() string {
-	return " "
+	return 1
 }
 
 // SetSensuEnv reads in the environment details provided by Oahi and drop it into a staticly defined struct.
