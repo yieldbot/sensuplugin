@@ -10,10 +10,10 @@ package dracky
 
 import (
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"os"
 	"strings"
-  "fmt"
 )
 
 // EventName generates a simple string for use by elasticsearch and internal logging of all monitoring alerts.
@@ -85,8 +85,8 @@ func CreateCheckName(check string) string {
 }
 
 // DefineCheckStateDuration calculates how long a monitor has been in a given state.
-func DefineCheckStateDuration() string {
-	return "0"
+func DefineCheckStateDuration() int {
+	return 0
 }
 
 // SetSensuEnv reads in the environment details provided by Oahi and drop it into a staticly defined struct.
@@ -120,7 +120,7 @@ func (e SensuEvent) AcquireSensuEvent() *SensuEvent {
 // Check is for generic error handling in all Yieldbot alert and dashboard packages.
 func Check(e error) {
 	if e != nil {
-    fmt.Printf("%v", e)
+		fmt.Printf("%v", e)
 		panic(e)
 	}
 }
