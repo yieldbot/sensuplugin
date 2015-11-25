@@ -1,13 +1,13 @@
 {
   "coordinates": {
     "org": "com.yieldbot.devops",
-    "name": "dracky",
+    "name": "sensu-yieldbot-library",
     "type": "deployable"
   },
   "build": [
     ""
   ],
   "version": [
-    ""
+    "cat version.txt"
   ]
 }
