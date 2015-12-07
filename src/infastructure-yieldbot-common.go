@@ -15,5 +15,5 @@ var Debug bool
 var JavaApp bool
 
 var SlackChannels map[string]string
-SlackChannels['monitoring-test'] = "C09JY7W0P"
-SlackChannels['devops-alerts'] = "C02TLVDQU"
+SlackChannels["monitoring-test"] = "C09JY7W0P"
+SlackChannels["devops-alerts"] = "C02TLVDQU"
