@@ -10,9 +10,24 @@
 # you have some method of dropping keys, in Vagrant you can use ssh-agent and
 # then set `forward_agent` to true in the Vagrantfile.
 
+# Copyright (c) 2015 Yieldbot
+# version 0.0.2
+
+# Generate a list of dependencys to install. Whenever possible the golang
+# convention of using the std library should be followed rather than bring in
+# dependencys that then need to be managed.
 PKGLIST=$(go list ./... | xargs go list -f '{{join .Deps "\n"}}' | sort -u)
 
+# Create the vendor directory. In the future all dependencys will be installed
+# into the repo vs the $GOPATH tree. This will be the standard way going forward
+# in 1.6 so we should support it now and it just plain makes sense.
+mkdir ./vendor
+
+
 for i in $PKGLIST; do
+  # We use expect here to detect when a username/password is needed which points
+  # to a private repo that should be cloned via SSH. This script has no provisions
+  # for keys so that will be up to the user to manage.
   /usr/bin/expect << EOF &> /dev/null
       spawn go get $i
       expect "Username for 'https://github.com':"
@@ -27,7 +42,9 @@ EOF
           install_dir=$(echo $i | sed 's#/src##')
         fi
 
-        echo RUNNING: git clone $install_pkg $GOPATH/src/$install_dir
-        git clone $install_pkg $GOPATH/src/$install_dir
+        # Clone the repo via SSH with a depth of 1. This is just for managaing
+        # te dependencys. Any modifications to the repo should be done in their
+        # own location.
+        git clone $install_pkg $GOPATH/src/$install_dir --depth 1
       fi
 done
