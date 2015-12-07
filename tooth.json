@@ -5,9 +5,15 @@
     "type": "deployable"
   },
   "build": [
-    ""
+    "make all"
   ],
   "version": [
-    "cat version.txt"
+    "make version"
+  ],
+  "bump": [
+    "make version_bump"
+  ],
+  "clean": [
+    "make clean"
   ]
 }
