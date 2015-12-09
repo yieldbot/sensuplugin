@@ -6,7 +6,7 @@
 //   for details.
 
 // Package dracky implements common data structures and functions for Yieldbot monitoring alerts and dashboards
-package dracky
+package SensuYieldbotLibrary
 
 import (
 	"encoding/json"

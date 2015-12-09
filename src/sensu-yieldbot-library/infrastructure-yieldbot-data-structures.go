@@ -5,7 +5,7 @@
 //   Released under the MIT License; see LICENSE
 //   for details.
 
-package dracky
+package SensuYieldbotLibrary
 
 // SensuEvent holds Sensu generated check results.
 type SensuEvent struct {
