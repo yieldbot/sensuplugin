@@ -15,6 +15,6 @@ var Debug bool
 var JavaApp bool
 
 var SlackChannels = map[string]string {
-"monitoring-test" : "C09JY7W0P",
-"devops-alerts" : "C02TLVDQU",
+"monitoring-test" : "xxx",
+"devops-alerts" : "xxx",
 }
