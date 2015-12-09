@@ -5,7 +5,7 @@
 //   Released under the MIT License; see LICENSE
 //   for details.
 
-package ybsensu
+package handler
 
 // EnvironmentFile contains environmental details generated during the Chef run by Oahi.
 const EnvironmentFile string = "/etc/sensu/conf.d/monitoring_infra.json"
