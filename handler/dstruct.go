@@ -1,4 +1,5 @@
-// Library for all data structures used by the Yieldbot Infrastructure teams
+// Library for all handler data structures used by the Yieldbot Infrastructure
+// teams in sensu.
 //
 // LICENSE:
 //   Copyright 2015 Yieldbot. <devops@yieldbot.com>

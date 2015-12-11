@@ -1,4 +1,5 @@
-// Library for all functions used by the Yieldbot Infrastructure teams
+// Library for all handler functions used by the Yieldbot Infrastructure
+// teams in sensu.
 //
 // LICENSE:
 //   Copyright 2015 Yieldbot. <devops@yieldbot.com>
@@ -115,12 +116,4 @@ func (e SensuEvent) AcquireSensuEvent() *SensuEvent {
 		Check(err)
 	}
 	return &e
-}
-
-// Check is for generic error handling in all Yieldbot alert and dashboard packages.
-func Check(e error) {
-	if e != nil {
-		fmt.Printf("%v", e)
-		panic(e)
-	}
 }
