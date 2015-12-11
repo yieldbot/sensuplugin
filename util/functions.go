@@ -10,8 +10,9 @@ package util
 
 import (
 	"fmt"
-  "os"
+	"os"
 )
+
 // EHndlr is for generic error handling in all Yieldbot monitoring packages.
 func EHndlr(e error) {
 	if e != nil {

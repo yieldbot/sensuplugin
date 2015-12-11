@@ -11,10 +11,10 @@ package handler
 
 import (
 	"encoding/json"
+	"github.com/yieldbot/ybsensu/util"
 	"io/ioutil"
 	"os"
 	"strings"
-  "github.com/yieldbot/ybsensu/util"
 )
 
 // EventName generates a simple string for use by elasticsearch and internal logging of all monitoring alerts.
@@ -25,7 +25,7 @@ func EventName(client string, check string) string {
 // AcquireMonitoredInstance sets the correct device that is being monitored. In the case of snmp trap collection, containers,
 // or applicance monitoring the device running the sensu-client may not be the device actually being monitored.
 func (e SensuEvent) AcquireMonitoredInstance() string {
-	var monitoredInstance string
+	// var monitoredInstance string
 	if e.Check.Source != "" {
 		return e.Check.Source
 	} else {
@@ -73,8 +73,8 @@ func DefineStatus(status int) string {
 		return "PERMISSION DENIED"
 	case 127:
 		return "CONFIG ERROR"
-  case 129:
-    return "GENERAL GOLANG ERROR"
+	case 129:
+		return "GENERAL GOLANG ERROR"
 	default:
 		return "UNKNOWN"
 	}
