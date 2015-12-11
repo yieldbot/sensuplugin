@@ -6,7 +6,7 @@
 //   Released under the MIT License; see LICENSE
 //   for details.
 
-// Package dracky implements common data structures and functions for Yieldbot monitoring alerts and dashboards
+// Package handler implements common data structures and functions for Yieldbot monitoring alerts and dashboards
 package handler
 
 import (
@@ -14,6 +14,7 @@ import (
 	"io/ioutil"
 	"os"
 	"strings"
+  "github.com/yieldbot/ybsensu/util"
 )
 
 // EventName generates a simple string for use by elasticsearch and internal logging of all monitoring alerts.
@@ -21,8 +22,8 @@ func EventName(client string, check string) string {
 	return client + "_" + check
 }
 
-// AcquireMonitoredInstance sets the correct device that is being monitored. In the case of snmp trap collection, containers, or applicance
-// monitoring the device running the sensu-client may not be the device actually being monitored.
+// AcquireMonitoredInstance sets the correct device that is being monitored. In the case of snmp trap collection, containers,
+// or applicance monitoring the device running the sensu-client may not be the device actually being monitored.
 func (e SensuEvent) AcquireMonitoredInstance() string {
 	var monitoredInstance string
 	if e.Check.Source != "" {
@@ -91,7 +92,7 @@ func DefineCheckStateDuration() int {
 	return 0
 }
 
-// SetSensuEnv reads in the environment details provided by Oahi and drop it into a staticly defined struct.
+// SetSensuEnv reads in the environment details provided by Oahi and drops them into a staticly defined struct.
 func SetSensuEnv() *EnvDetails {
 	envFile, err := ioutil.ReadFile(EnvironmentFile)
 	if err != nil {
