@@ -11,7 +11,6 @@ package handler
 
 import (
 	"encoding/json"
-	"fmt"
 	"io/ioutil"
 	"os"
 	"strings"
@@ -27,11 +26,11 @@ func EventName(client string, check string) string {
 func (e SensuEvent) AcquireMonitoredInstance() string {
 	var monitoredInstance string
 	if e.Check.Source != "" {
-		monitoredInstance = e.Check.Source
+		return e.Check.Source
 	} else {
-		monitoredInstance = e.Client.Name
+		return e.Client.Name
 	}
-	return monitoredInstance
+	// return monitoredInstance
 }
 
 // func Set_time(t int) string {
@@ -73,6 +72,8 @@ func DefineStatus(status int) string {
 		return "PERMISSION DENIED"
 	case 127:
 		return "CONFIG ERROR"
+  case 129:
+    return "GENERAL GOLANG ERROR"
 	default:
 		return "UNKNOWN"
 	}
@@ -81,8 +82,8 @@ func DefineStatus(status int) string {
 // CreateCheckName creates a monitor name that is easliy searchable in ES using different
 // levels of granularity.
 func CreateCheckName(check string) string {
-	fmtdCheck := strings.Replace(check, "-", ".", -1)
-	return fmtdCheck
+	return strings.Replace(check, "-", ".", -1)
+	// return fmtdCheck
 }
 
 // DefineCheckStateDuration calculates how long a monitor has been in a given state.
@@ -94,13 +95,13 @@ func DefineCheckStateDuration() int {
 func SetSensuEnv() *EnvDetails {
 	envFile, err := ioutil.ReadFile(EnvironmentFile)
 	if err != nil {
-		Check(err)
+		util.EHndlr(err)
 	}
 
 	var envDetails EnvDetails
 	err = json.Unmarshal(envFile, &envDetails)
 	if err != nil {
-		Check(err)
+		util.EHndlr(err)
 	}
 	return &envDetails
 }
@@ -109,11 +110,11 @@ func SetSensuEnv() *EnvDetails {
 func (e SensuEvent) AcquireSensuEvent() *SensuEvent {
 	results, err := ioutil.ReadAll(os.Stdin)
 	if err != nil {
-		Check(err)
+		util.EHndlr(err)
 	}
 	err = json.Unmarshal(results, &e)
 	if err != nil {
-		Check(err)
+		util.EHndlr(err)
 	}
 	return &e
 }

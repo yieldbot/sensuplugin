@@ -6,12 +6,16 @@
 //   Released under the MIT License; see LICENSE
 //   for details.
 
-package lib
+package util
 
-// Check is for generic error handling in all Yieldbot alert and dashboard packages.
-func Check(e error) {
+import (
+	"fmt"
+  "os"
+)
+// EHndlr is for generic error handling in all Yieldbot monitoring packages.
+func EHndlr(e error) {
 	if e != nil {
-		fmt.Printf("%v", e)
-		panic(e)
+		fmt.Printf("ERROR: %v", e)
+		os.Exit(129)
 	}
 }
