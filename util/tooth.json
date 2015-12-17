@@ -5,15 +5,15 @@
     "type": "golang"
   },
   "build": [
-    "make srcdir=. repo=ybsensuplugin pkg=util all"
+    "make -f ../Makefile srcdir=. repo=ybsensuplugin pkg=util all"
   ],
   "version": [
-    "make version"
+    "make -f ../Makefile version"
   ],
   "bump": [
-    "make version_bump"
+    "make -f ../Makefile version_bump"
   ],
   "clean": [
-    "make clean"
+    "make -f ../Makefile make clean"
   ]
 }
