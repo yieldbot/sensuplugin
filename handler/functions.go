@@ -28,10 +28,8 @@ func (e SensuEvent) AcquireMonitoredInstance() string {
 	// var monitoredInstance string
 	if e.Check.Source != "" {
 		return e.Check.Source
-	} else {
-		return e.Client.Name
 	}
-	// return monitoredInstance
+	return e.Client.Name
 }
 
 // func Set_time(t int) string {
