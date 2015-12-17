@@ -12,7 +12,7 @@ This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachang
 ### Fixed
 - updated internal documentation to fix spelling and comprehesion errors
 - bring util packge into handler package for consistent error handling
- 
+
 ## 1.0.0 - 2015-12-10
 
 ### Changed
@@ -24,4 +24,4 @@ This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachang
 ### Added
 - initial internal stable release
 
-[unreleased]: https://github.com/yieldbot/ybsensu/compare/1.0.0....HEAD
+[unreleased]: https://github.com/yieldbot/ybsensuplugin/compare/1.0.0....HEAD
