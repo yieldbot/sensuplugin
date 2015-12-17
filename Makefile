@@ -183,7 +183,7 @@ build: pre-build
 
 # delete all existing binaries and directories used for building
 clean:
-		rm -rf ./bin ./$(targetdir)
+		rm -rf $(srcdir)/bin $(srcdir)/$(targetdir)
 
 # run the golang coverage tool
 coverage:
