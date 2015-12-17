@@ -260,8 +260,8 @@ pre-build:
 
 pre-dist:
 	@if [ -e $(srcdir)/cmd/$(pkg) ]; then \
-		@echo "Ensuring output tarball directory exists"
-	@mkdir -p $(srcdir)/$(targetdir)
+		echo "Ensuring output tarball directory exists"; \
+	  mkdir -p $(srcdir)/$(targetdir)' \'
 	else \
 	  echo "No binaries were found. No output directory will be created"; \
 	fi; \
