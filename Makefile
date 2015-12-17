@@ -2,7 +2,7 @@ SHELL = /bin/sh
 
 # This is a general purpose Makefile for building golang projects
 #
-# version 0.0.8
+# version 0.0.9
 # Copyright (c) 2015 Yieldbot
 
 .PHONY: all build bump_version clean coverage dist format info install lint maintainer-clean test test_all updatedeps version vet
@@ -275,8 +275,8 @@ updatedeps:
 
 # print out the current version of the project
 version:
-	@if [ -e version ]; then \
-		ver=$$(awk '{ print $$NF }' version) ;\
+	@if [ -e $(pkg)/version ]; then \
+		ver=$$(awk '{ print $$NF }' $(pkg)/version) ;\
     echo "{\"version\":\"$$ver\"}"; \
 	else \
 		@echo "No version file found in the project root"; \
@@ -284,9 +284,9 @@ version:
 
 # bump the version of the project
 version_bump:
-	@ver=$$(awk '{ print $$NF }' version | awk -F. '{ print $$NF }'); \
+	@ver=$$(awk '{ print $$NF }' $(pkg)/version | awk -F. '{ print $$NF }'); \
 	ver=$$(($$ver+1)); \
-	echo "version 0.0.$$ver" > ./version
+	echo "version 0.0.$$ver" > $(pkg)/version
 
 # run go vet
 vet:
