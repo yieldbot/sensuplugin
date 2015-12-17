@@ -191,8 +191,12 @@ coverage:
 
 # pack everything up neatly
 dist: build pre-dist
-	@cd ./bin/$(pkg); \
-	tar czvf ../../$(targetdir)/output.tar.gz *; \
+	@if [ -e $(srcdir)/cmd/$(pkg) ]; then \
+    cd $(srcdir)/bin/$(pkg); \
+	  tar czvf ../../$(targetdir)/output.tar.gz *; \
+	else \
+	  echo "No binaries were found. No output package will be created"; \
+	fi; \
 
 # run the golang formatting tool on all files in the current src directory
 format:
@@ -238,9 +242,9 @@ maintainer-clean:
 # YELLOW need to account for updated packages
 # YELLOW need to set the repo name automatically
 pre-build:
-	@if [ -e ./cmd/$(pkg) ]; then \
+	@if [ -e $(srcdir)/cmd/$(pkg) ]; then \
 		echo "Ensuring output binary directory exists"; \
-		mkdir -p ./bin/$(pkg); \
+		mkdir -p $(srcdir)/bin/$(pkg); \
 	else \
 	  echo "No binaries were found. No bin directory will be created"; \
 	fi; \
@@ -255,8 +259,12 @@ pre-build:
 
 
 pre-dist:
-	@echo "Ensuring output tarball directory exists"
-	@mkdir -p ./$(targetdir)
+	@if [ -e $(srcdir)/cmd/$(pkg) ]; then \
+		@echo "Ensuring output tarball directory exists"
+	@mkdir -p $(srcdir)/$(targetdir)
+	else \
+	  echo "No binaries were found. No output directory will be created"; \
+	fi; \
 
 # run unit tests and anything else testing wise needed
 test:
