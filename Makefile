@@ -1,13 +1,13 @@
 SHELL = /bin/sh
 
-# This is a gernal purpose Makefile for building golang projects
+# This is a general purpose Makefile for building golang projects
 #
-# version 0.0.4
+# version 0.0.8
 # Copyright (c) 2015 Yieldbot
 
 .PHONY: all build bump_version clean coverage dist format info install lint maintainer-clean test test_all updatedeps version vet
 
-# We only care about golang and texinfo files at the moment so clear and explictly denote that
+# We only care about golang and texinfo files at the moment so clear and explicitly denote that
 .SUFFIXES:
 .SUFFIXES: .go .texinfo
 
@@ -19,7 +19,7 @@ infodir = /usr/local/share/info
 endif
 
 # Set the package to build. Specify additional values in a space
-# seperated array. To overwrite this use
+# separated array. To overwrite this use
 # `make pkg="diemon bobogono" build`
 ifndef pkg
 pkg = "."
@@ -28,7 +28,7 @@ endif
 # Set the src directory. You can overwrite this by setting your build command
 # to `make srcdir=path build`
 ifndef srcdir
-srcdir = src
+srcdir = cmd
 endif
 
 # Set the default os/arch to build for. Specify additional values in a space
@@ -45,7 +45,7 @@ pkgbase = github.com
 endif
 
 # Set the repo to look for the package in. Specify additional values in a space
-# seperated array. To overwrite this use
+# separated array. To overwrite this use
 # `make repo="diemon bobogono" build`
 ifndef repo
 repo := $(shell pwd | awk -F/ '{ print $$NF }')
@@ -71,17 +71,13 @@ endif
 # Set the path that the tarball will be dropped into. DrTeeth will look in
 # ./target by default but golang will put it into ./pkg if left to itself.
 ifndef targetdir
-targetdir = target
+targetdir = pkg
 endif
 
 # Set where the local binary should be installed to for testing purposes.
 ifndef destdir
 destdir = /usr/local/bin
 endif
-
-# Set the base directory that we can work from. It needs to go at the end to
-# all the paths have been resolved correctly
-base = $$GOPATH/src/$(pkgbase)/$(repo)
 
 define help
 --Targets--
@@ -150,7 +146,7 @@ osarch Set the default os/arch to build for. Specify additional values in a spac
        Default: linux/amd64
 
 pkgbase Set the base package location.
-        Ex. `make pkgbase="github.com yieldbot" build
+        Ex. `make pkgbase="github.com/yieldbot" build
         Default: github.com
 
 repo Set the repo to look for the package in. Specify additional values in a space
@@ -176,20 +172,18 @@ default: all
 
 # build and then create a tarball in the target directory
 # basically everything needed to put it into artifactory
-all: format lint updatedeps build dist
+all: format build dist
 
 # Build a binary from the given package and drop it into the local bin
 build: pre-build
-	for i in $$(echo $(pkg)); do \
-  	gox -osarch="$(osarch)" -output=$(output) ./$(srcdir)/$$i; \
+	@for i in $$(echo $(pkg)); do \
+	  export PATH=$$PATH:$$GOROOT/bin:$$GOBIN; \
+  	gox -parallel=1 -osarch="$(osarch)" -output=$(output) ./$(srcdir)/$$i; \
   done; \
 
 # delete all existing binaries and directories used for building
 clean:
-	@for i in $$(echo $(repo)); do \
-  	cd $(base); \
-		rm -rf ./bin ./$(targetdir); \
-  done; \
+		rm -rf ./bin ./$(targetdir)
 
 # run the golang coverage tool
 coverage:
@@ -197,24 +191,22 @@ coverage:
 
 # pack everything up neatly
 dist: build pre-dist
-	for i in $$(echo $(pkg)); do \
-  	cd $(base)/bin/$(pkg); \
-		tar czvf ../../$(targetdir)/$(repo).tgz *; \
-  done; \
+	@cd ./bin/$(pkg); \
+	tar czvf ../../$(targetdir)/output.tar.gz *; \
 
 # run the golang formatting tool on all files in the current src directory
 format:
-	OUT=`gofmt -l ./src/($pkg)/*.go`; if [ "$$OUT" ]; then echo $$OUT; exit 1; fi
+	@OUT=`gofmt -l ./$(srcdir)/$(pkg)/*.go`; if [ "$$OUT" ]; then echo $$OUT; exit 1; fi
 
 # fix any detected formatting issues
 format_correct:
-	@gofmt -w .
+	@gofmt -w ./$(srcdir)/$(pkg)/*.go
 
 # install the binary and any info docs locally for testing
 install:
-	@if [ -e $(base)/bin/* ]; then \
+	@if [ -e ./bin/* ]; then \
 	  mkdir -p $(destdir); \
-	  cp $(base)/bin/$(pkg)/* $(destdir); \
+	  cp ./bin/$(pkg)/* $(destdir); \
 	else \
 		echo "Nothing to install, no binaries were found in ./bin/"; \
 	fi; \
@@ -237,17 +229,34 @@ help:
 
 # run the golang linting tool
 lint:
-	@OUT=`golint ./src/($pkg)/*.go`; if [ "$$OUT" ]; then echo $$OUT; exit 1; fi
+	@OUT=`golint ./$(srcdir)/$(pkg)/*.go`; if [ "$$OUT" ]; then echo $$OUT; exit 1; fi
 
 maintainer-clean:
 	@echo "this needs to be implemented"
 
 # create a directory to store binaries in
+# YELLOW need to account for updated packages
+# YELLOW need to set the repo name automatically
 pre-build:
-	mkdir -p ./bin/$(pkg)
+	@if [ -e ./cmd/$(pkg) ]; then \
+		echo "Ensuring output binary directory exists"; \
+		mkdir -p ./bin/$(pkg); \
+	else \
+	  echo "No binaries were found. No bin directory will be created"; \
+	fi; \
+	if [ -e $$GOPATH/src/github.com/yieldbot/ybsensuplugin/Makefile ]; then \
+	  echo "Correct dependency directory structure already exists, doing nothing"; \
+	else \
+		echo "Creating proper build environment and dependency directory structure"; \
+		mkdir -p $$GOPATH/src/github.com/yieldbot/ybsensuplugin; \
+		cp -R * $$GOPATH/src/github.com/yieldbot/ybsensuplugin; \
+	fi; \
+
+
 
 pre-dist:
-	mkdir -p ./$(targetdir)
+	@echo "Ensuring output tarball directory exists"
+	@mkdir -p ./$(targetdir)
 
 # run unit tests and anything else testing wise needed
 test:
@@ -281,4 +290,4 @@ version_bump:
 
 # run go vet
 vet:
-	@go vet ./...
+	@go vet ./$(srcdir)/$(pkg)/*.go
