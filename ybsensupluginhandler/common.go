@@ -8,7 +8,6 @@
 
 package ybsensupluginhandler
 
-
 // create a map for sensu environments and read from that
 
 // Map of all known exit codes accepted by the monitoring stack
