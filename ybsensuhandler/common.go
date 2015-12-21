@@ -13,10 +13,10 @@ package ybsensuhandler
 // utilize existing maps for alerting and help avoid unnecessary noise.
 
 var MonitoringErrorCodes = map[string]int{
-  "GeneralGolangError": 129,
-  "ConfigError" : 127,
-  "PermissionError" : 126,
-  "RuntimeError" : 42,
+	"GeneralGolangError": 129,
+	"ConfigError":        127,
+	"PermissionError":    126,
+	"RuntimeError":       42,
 }
 
 // create a map for sensu environments and read from that
