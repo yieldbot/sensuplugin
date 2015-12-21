@@ -1,11 +1,11 @@
 {
   "coordinates": {
     "org": "ybsensuplugin",
-    "name": "ybsensupluginhandler",
+    "name": "ybsensupluginutil",
     "type": "golang"
   },
   "build": [
-    "make -f ../Makefile srcdir=.. repo=ybsensuplugin pkg=ybsensuhandler all"
+    "make -f ../Makefile srcdir=../ repo=ybsensuplugin pkg=ybsensupluginutil all"
   ],
   "version": [
     "make -f ../Makefile version"
@@ -14,6 +14,6 @@
     "make -f ../Makefile version_bump"
   ],
   "clean": [
-    "make -f ../Makefile srcdir=.. clean"
+    "make -f ../Makefile srcdir=../ clean"
   ]
 }

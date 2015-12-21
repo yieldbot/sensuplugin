@@ -6,7 +6,7 @@
 //   Released under the MIT License; see LICENSE
 //   for details.
 
-package ybsensuhandler
+package ybsensupluginhandler
 
 // Error codes for applications.
 // Please use the below codes instead of random non-zero so that monitoring can

@@ -1,4 +1,4 @@
-// Library for general purpose functions used by the Yieldbot Infrastructure
+// Library for check related functions used by the Yieldbot Infrastructure
 // teams in sensu.
 //
 // LICENSE:
@@ -6,7 +6,7 @@
 //   Released under the MIT License; see LICENSE
 //   for details.
 
-package ybsensuutil
+package ybsensuplugincheck
 
 import (
 	"fmt"
