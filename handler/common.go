@@ -6,6 +6,8 @@
 //   Released under the MIT License; see LICENSE
 //   for details.
 
+package ybsensuhandler
+
 // Error codes for applications.
 // Please use the below codes instead of random non-zero so that monitoring can
 // utilize existing maps for alerting and help avoid unnecessary noise.
