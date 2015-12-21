@@ -1,4 +1,4 @@
-// Library for all non-constant handler releated variables used by the Yieldbot
+// Library for all non-constant handler related variables used by the Yieldbot
 // Infrastructure teams in sensu
 //
 // LICENSE:
@@ -8,16 +8,6 @@
 
 package ybsensupluginhandler
 
-// Error codes for applications.
-// Please use the below codes instead of random non-zero so that monitoring can
-// utilize existing maps for alerting and help avoid unnecessary noise.
-
-var MonitoringErrorCodes = map[string]int{
-	"GeneralGolangError": 129,
-	"ConfigError":        127,
-	"PermissionError":    126,
-	"RuntimeError":       42,
-}
 
 // create a map for sensu environments and read from that
 
