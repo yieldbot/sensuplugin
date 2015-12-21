@@ -5,7 +5,7 @@
     "type": "golang"
   },
   "build": [
-    "make -f ../Makefile srcdir=../ repo=ybsensuplugin pkg=util all"
+    "make -f ../Makefile srcdir=../ repo=ybsensuplugin pkg=ybsensuutil all"
   ],
   "version": [
     "make -f ../Makefile version"
