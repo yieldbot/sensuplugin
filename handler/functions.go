@@ -7,7 +7,7 @@
 //   for details.
 
 // Package handler implements common data structures and functions for Yieldbot monitoring alerts and dashboards
-package handler
+package ybsensuhandler
 
 import (
 	"encoding/json"

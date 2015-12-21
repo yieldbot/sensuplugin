@@ -6,7 +6,7 @@
 //   Released under the MIT License; see LICENSE
 //   for details.
 
-package handler
+package ybsensuhandler
 
 // SensuEvent holds Sensu generated check results.
 type SensuEvent struct {

@@ -6,7 +6,7 @@
 //   Released under the MIT License; see LICENSE
 //   for details.
 
-package util
+package ybsensuutil
 
 import (
 	"fmt"
