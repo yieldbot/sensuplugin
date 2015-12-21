@@ -15,7 +15,7 @@ const EnvironmentFile string = "/etc/sensu/conf.d/monitoring_infra.json"
 // Please use the below codes instead of random non-zero so that monitoring can
 // utilize existing maps for alerting and help avoid unnecessary noise.
 
-MonitoringErrorCodes := map[string]int{
+MonitoringErrorCodes = map[string]int{
   "GeneralGolangError": 129,
   "ConfigError" : 127,
   "PermissionError" : 126,
