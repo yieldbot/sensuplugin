@@ -36,7 +36,7 @@ func Exit(args ...interface) {
 	for i, p := range args {
 		switch i {
 		case 0: // name
-			param, ok := p.(str)
+			param, ok := p.(string)
 			if !ok {
 				panic("1st parameter not type string.")
 			}
