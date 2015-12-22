@@ -16,10 +16,10 @@ var Debug bool
 // Please use the below codes instead of random non-zero so that monitoring can
 // utilize existing maps for alerting and help avoid unnecessary noise.
 var MonitoringErrorCodes = map[string]int{
-	"GeneralGolangError": 129,
-	"ConfigError":        127,
-	"PermissionError":    126,
-	"RuntimeError":       42,
+	"GENERALGOLANGERROR": 129,
+	"CONFIGERROR":        127,
+	"PERMISSIONERROR":    126,
+	"RUNTIMEERROR":       42,
 	"OK":                 0,
 	"WARNING":            1,
 	"CRITICAL":           2,
