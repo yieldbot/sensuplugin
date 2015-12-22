@@ -20,8 +20,8 @@ var MonitoringErrorCodes = map[string]int{
 	"ConfigError":        127,
 	"PermissionError":    126,
 	"RuntimeError":       42,
-	"OK":                 1,
-	"WARNING":            2,
-	"CRITICAL":           3,
-	"UNKNOWN":            4,
+	"OK":                 0,
+	"WARNING":            1,
+	"CRITICAL":           2,
+	"UNKNOWN":            3,
 }
