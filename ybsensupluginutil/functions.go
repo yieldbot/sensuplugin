@@ -24,7 +24,7 @@ func EHndlr(e error) {
 
 // Exit method for all sensu checks that will print the output and desired
 // exit code
-func Exit(args ...string) {
+func Exit(args ...interface) {
 	// YELLOW need to make sure that condition exists
 	var exitCode int
 	output := ""
@@ -61,35 +61,4 @@ func Exit(args ...string) {
 
 	fmt.Printf("%v", output)
 	os.Exit(exitCode)
-}
-
-func CamelCaseAll(ss ...string) []string {
-
-	camelCasedStrings := make([]string, len(ss))
-
-	for i, s := range ss {
-		camelCasedStrings[i] = stringcase.ToCamelCase(s)
-	}
-
-	return camelCasedStrings
-}
-
-func main() {
-	ss1 := CamelCaseAll("hello world", "Apple Banana Cherry")
-	// = []string{"helloWorld", "appleBananaCherry"}
-
-	ss2 := CamelCaseAll("More than meets the eye")
-	// = []string{"moreThanMeetsTheEye"}
-
-	ss3 := CamelCaseAll()
-	// = []string{}
-
-	fmt.Printf("ss1 = %v\n", ss1)
-	fmt.Printf("ss2 = %v\n", ss2)
-	fmt.Printf("ss3 = %v\n", ss3)
-
-	// Output:
-	// ss1 = [helloWorld appleBananaCherry]
-	// ss2 = [moreThanMeetsTheEye]
-	// ss3 = []
 }
