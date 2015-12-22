@@ -28,9 +28,9 @@ func Exit(s string, o string) {
 	// YELLOW need to make sure that condition exists
 	var exitCode int
 
-	for k := range ybsensupluginutil.MonitoringErrorCodes {
+	for k := range MonitoringErrorCodes {
 		if k == strings.ToUpper(s) {
-			exitCode = ybsensupluginutil.MonitoringErrorCodes[k]
+			exitCode = MonitoringErrorCodes[k]
 		}
 		fmt.Printf("%v", o)
 		os.Exit(exitCode)
