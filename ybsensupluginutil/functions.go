@@ -24,15 +24,41 @@ func EHndlr(e error) {
 
 // Exit method for all sensu checks that will print the output and desired
 // exit code
-func Exit(s string, o string) {
+func Exit(args ...interface{}) {
 	// YELLOW need to make sure that condition exists
 	var exitCode int
+	output := ""
 
-	for k := range MonitoringErrorCodes {
-		if k == strings.ToUpper(s) {
-			exitCode = MonitoringErrorCodes[k]
-		}
-		fmt.Printf("%v", o)
-		os.Exit(exitCode)
+	if 1 > len(args) {
+		panic("Not enough parameters.")
 	}
+
+	for i, p := range args {
+		switch i {
+		case 0: // name
+			param, ok := p.(int)
+			if !ok {
+				panic("1st parameter not type string.")
+			}
+
+			for k := range MonitoringErrorCodes {
+				if k == strings.ToUpper(param) {
+					exitCode = MonitoringErrorCodes[k]
+				}
+			}
+
+		case 1: // x
+			param, ok := p.(string)
+			if !ok {
+				panic("2nd parameter not type string.")
+			}
+			output = param
+
+		default:
+			panic("Wrong parameter count.")
+		}
+	}
+
+	fmt.Printf("%v", output)
+	os.Exit(exitCode)
 }
