@@ -12,13 +12,16 @@ package ybsensupluginutil
 // to avoid the use of global variables
 var Debug bool
 
-// Error codes for applications.
+// MonitoringErrorCodes provides a standard set of error codes to use.
 // Please use the below codes instead of random non-zero so that monitoring can
 // utilize existing maps for alerting and help avoid unnecessary noise.
-
 var MonitoringErrorCodes = map[string]int{
 	"GeneralGolangError": 129,
 	"ConfigError":        127,
 	"PermissionError":    126,
 	"RuntimeError":       42,
+	"OK":                 1,
+	"WARNING":            2,
+	"CRITICAL":           3,
+	"UNKNOWN":            4,
 }
