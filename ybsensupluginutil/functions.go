@@ -24,7 +24,7 @@ func EHndlr(e error) {
 
 // Exit method for all sensu checks that will print the output and desired
 // exit code
-func Exit(args ...interface) {
+func Exit(args ...interface{}) {
 	// YELLOW need to make sure that condition exists
 	var exitCode int
 	output := ""
