@@ -24,7 +24,7 @@ func EHndlr(e error) {
 
 // Exit method for all sensu checks that will print the output and desired
 // exit code
-func Exit(args ...interface{}) {
+func Exit(args ...string) {
 	// YELLOW need to make sure that condition exists
 	var exitCode int
 	output := ""
@@ -36,7 +36,7 @@ func Exit(args ...interface{}) {
 	for i, p := range args {
 		switch i {
 		case 0: // name
-			param, ok := p.(int)
+			param, ok := p.(str)
 			if !ok {
 				panic("1st parameter not type string.")
 			}
@@ -61,4 +61,35 @@ func Exit(args ...interface{}) {
 
 	fmt.Printf("%v", output)
 	os.Exit(exitCode)
+}
+
+func CamelCaseAll(ss ...string) []string {
+
+	camelCasedStrings := make([]string, len(ss))
+
+	for i, s := range ss {
+		camelCasedStrings[i] = stringcase.ToCamelCase(s)
+	}
+
+	return camelCasedStrings
+}
+
+func main() {
+	ss1 := CamelCaseAll("hello world", "Apple Banana Cherry")
+	// = []string{"helloWorld", "appleBananaCherry"}
+
+	ss2 := CamelCaseAll("More than meets the eye")
+	// = []string{"moreThanMeetsTheEye"}
+
+	ss3 := CamelCaseAll()
+	// = []string{}
+
+	fmt.Printf("ss1 = %v\n", ss1)
+	fmt.Printf("ss2 = %v\n", ss2)
+	fmt.Printf("ss3 = %v\n", ss3)
+
+	// Output:
+	// ss1 = [helloWorld appleBananaCherry]
+	// ss2 = [moreThanMeetsTheEye]
+	// ss3 = []
 }
