@@ -1,7 +1,7 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-# version 0.0.6
+# version 0.0.8
 
 # Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
 VAGRANTFILE_API_VERSION = '2'
@@ -41,10 +41,6 @@ chmod 600 /home/vagrant/.ssh/config
 go get github.com/axw/gocov/gocov
 go get -u github.com/golang/lint/golint
 go get github.com/tools/godep
-go get github.com/mitchellh/gox
-sudo apt-add-repository ppa:brightbox/ruby-ng
-sudo apt-get update
-sudo apt-get install ruby2.2
 cat << 'EOF' >> /home/vagrant/.ssh/config
 StrictHostKeyChecking no
 EOF
@@ -56,7 +52,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.hostname = 'ybsensuplugin'
 
   config.vm.provision 'shell', inline: $script, privileged: false
-  config.vm.synced_folder '.', '/opt/gopath/src/github.com/yieldbot/ybsensuplugin'
+  config.vm.synced_folder '.', '/opt/gopath/src/github.com/yieldbot/sensuplugin'
   config.ssh.forward_agent = true
 
   config.vm.provider :virtualbox do |vb|

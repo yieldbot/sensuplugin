@@ -6,7 +6,7 @@
 //   Released under the MIT License; see LICENSE
 //   for details.
 
-package ybsensuplugincheck
+package sensucheck
 
 import (
 	"fmt"

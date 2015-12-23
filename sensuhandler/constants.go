@@ -6,4 +6,4 @@
 //   Released under the MIT License; see LICENSE
 //   for details.
 
-package ybsensupluginhandler
+package sensuhandler

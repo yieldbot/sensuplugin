@@ -6,7 +6,7 @@
 //   Released under the MIT License; see LICENSE
 //   for details.
 
-package ybsensupluginhandler
+package sensuhandler
 
 // create a map for sensu environments and read from that
 
