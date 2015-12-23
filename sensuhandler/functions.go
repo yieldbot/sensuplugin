@@ -7,11 +7,11 @@
 //   for details.
 
 // Package handler implements common data structures and functions for Yieldbot monitoring alerts and dashboards
-package ybsensupluginhandler
+package sensuhandler
 
 import (
 	"encoding/json"
-	"github.com/yieldbot/ybsensu/util"
+	"github.com/yieldbot/sensuplugin/sensuutil"
 	"io/ioutil"
 	"os"
 	"strings"
@@ -92,15 +92,15 @@ func DefineCheckStateDuration() int {
 
 // SetSensuEnv reads in the environment details provided by Oahi and drops them into a staticly defined struct.
 func SetSensuEnv() *EnvDetails {
-	envFile, err := ioutil.ReadFile(EnvironmentFile)
+	envFile, err := ioutil.ReadFile(sensuutil.EnvironmentFile)
 	if err != nil {
-		util.EHndlr(err)
+		sensuutil.EHndlr(err)
 	}
 
 	var envDetails EnvDetails
 	err = json.Unmarshal(envFile, &envDetails)
 	if err != nil {
-		util.EHndlr(err)
+		sensuutil.EHndlr(err)
 	}
 	return &envDetails
 }
@@ -109,11 +109,11 @@ func SetSensuEnv() *EnvDetails {
 func (e SensuEvent) AcquireSensuEvent() *SensuEvent {
 	results, err := ioutil.ReadAll(os.Stdin)
 	if err != nil {
-		util.EHndlr(err)
+		sensuutil.EHndlr(err)
 	}
 	err = json.Unmarshal(results, &e)
 	if err != nil {
-		util.EHndlr(err)
+		sensuutil.EHndlr(err)
 	}
 	return &e
 }
