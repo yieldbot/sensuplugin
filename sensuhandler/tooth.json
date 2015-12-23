@@ -1,7 +1,7 @@
 {
   "coordinates": {
-    "org": "ybsensuplugin",
-    "name": "ybsensupluginhandler",
+    "org": "sensuplugin",
+    "name": "sensuhandler",
     "type": "golang"
   },
   "build": [
