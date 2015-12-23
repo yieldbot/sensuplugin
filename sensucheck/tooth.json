@@ -10,9 +10,6 @@
   "version": [
     "make -f ../Makefile version"
   ],
-  "bump": [
-    "make -f ../Makefile version_bump"
-  ],
   "clean": [
     "make -f ../Makefile srcdir=../ clean"
   ]
