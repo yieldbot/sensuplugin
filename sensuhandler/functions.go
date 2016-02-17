@@ -39,6 +39,21 @@ func (e SensuEvent) AcquireMonitoredInstance() string {
 //
 // }
 
+func SetColor(status int) string {
+	switch status {
+	case 0:
+		return "#33CC33"
+	case 1:
+		return "warning"
+	case 2:
+		return "#FF0000"
+	case 3:
+		return "#FF6600"
+	default:
+		return "#FF6600"
+	}
+}
+
 // DefineSensuEnv sets the environment that the machine is running in based upon values
 // dropped via Oahi during the Chef run.
 func DefineSensuEnv(env string) string {
