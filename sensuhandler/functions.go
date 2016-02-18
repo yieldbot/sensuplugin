@@ -17,6 +17,11 @@ import (
 	"strings"
 )
 
+//cleanOutput will shorten the output to a more managable length
+func CleanOutput(output string) string {
+	return strings.Split(output, ":")[0]
+}
+
 // EventName generates a simple string for use by elasticsearch and internal logging of all monitoring alerts.
 func EventName(client string, check string) string {
 	return client + "_" + check

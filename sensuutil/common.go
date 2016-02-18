@@ -8,10 +8,6 @@
 
 package sensuutil
 
-// Debug  Do we print debug statements or not? This is set in each binary but is placed here
-// to avoid the use of global variables
-var Debug bool
-
 // MonitoringErrorCodes provides a standard set of error codes to use.
 // Please use the below codes instead of random non-zero so that monitoring can
 // utilize existing maps for alerting and help avoid unnecessary noise.
