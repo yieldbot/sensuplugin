@@ -16,6 +16,7 @@ var MonitoringErrorCodes = map[string]int{
 	"CONFIGERROR":        127,
 	"PERMISSIONERROR":    126,
 	"RUNTIMEERROR":       42,
+  "DEBUGGING":          37,
 	"OK":                 0,
 	"WARNING":            1,
 	"CRITICAL":           2,

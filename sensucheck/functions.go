@@ -8,15 +8,5 @@
 
 package sensucheck
 
-import (
-	"fmt"
-	"os"
-)
+import ()
 
-// EHndlr is for generic error handling in all Yieldbot monitoring packages.
-func EHndlr(e error) {
-	if e != nil {
-		fmt.Printf("ERROR: %v", e)
-		os.Exit(129)
-	}
-}
