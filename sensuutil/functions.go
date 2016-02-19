@@ -27,7 +27,7 @@ func EHndlr(e error) {
 // To use you want to pass it in the state you want and an opitional text you would want outputed with the check.
 //Ex. sensuutil.Exit("ok", "Everything is fine")
 //    sensuutil.Exit("critical", variable)
-// A list of error codes currently supported can be foun in common.go
+// A list of error codes currently supported can be found in common.go
 func Exit(args ...interface{}) {
 	// YELLOW need to make sure that condition exists
 	var exitCode int

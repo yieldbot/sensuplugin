@@ -12,13 +12,13 @@ package sensuutil
 // Please use the below codes instead of random non-zero so that monitoring can
 // utilize existing maps for alerting and help avoid unnecessary noise.
 var MonitoringErrorCodes = map[string]int{
-	"GENERALGOLANGERROR": 129,
-	"CONFIGERROR":        127,
-	"PERMISSIONERROR":    126,
-	"RUNTIMEERROR":       42,
-  "DEBUG":              37,
-	"OK":                 0,
-	"WARNING":            1,
-	"CRITICAL":           2,
-	"UNKNOWN":            3,
+	"GENERALGOLANGERROR": 129, // internal script error
+	"CONFIGERROR":        127, // unix config error, not enough parms, etc
+	"PERMISSIONERROR":    126, // not executable, etc
+	"RUNTIMEERROR":       42,  // self explantory
+  "DEBUG":              37,  // exit w/ debugging output
+	"OK":                 0,   // everything is light and bright
+	"WARNING":            1,   // this kinda sucks but don't get out of bed to deal with it
+	"CRITICAL":           2,   // get your ass out of bed you lazy idiot
+	"UNKNOWN":            3,   // Human sacrifice! Dogs and cats living together! Mass hysteria!
 }
