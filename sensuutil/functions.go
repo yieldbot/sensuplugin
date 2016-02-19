@@ -63,6 +63,6 @@ func Exit(args ...interface{}) {
 		}
 	}
 
-	fmt.Printf("%v", output)
+	fmt.Printf("%v\n", output)
 	os.Exit(exitCode)
 }
