@@ -16,7 +16,8 @@ var MonitoringErrorCodes = map[string]int{
 	"CONFIGERROR":        127, // unix config error, not enough parms, etc
 	"PERMISSIONERROR":    126, // not executable, etc
 	"RUNTIMEERROR":       42,  // self explantory
-        "DEBUG":              37,  // exit w/ debugging output
+        "DEBUG":              37,  // You had the Alliance on you, criminals and savages… half the people on this 
+                                   // ship have been shot or wounded, including yourself, and you’re harboring known fugitives.
 	"OK":                 0,   // “We’re still flying”
 	"WARNING":            1,   // this kinda sucks but don't get out of bed to deal with it
 	"CRITICAL":           2,   // “The ships hung in the sky in much the same way that bricks don't.” 
