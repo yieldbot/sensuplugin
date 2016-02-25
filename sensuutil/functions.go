@@ -18,7 +18,6 @@ import (
 func EHndlr(e error) {
 	if e != nil {
 		fmt.Printf("ERROR: %v", e)
-		os.Exit(129)
 	}
 }
 

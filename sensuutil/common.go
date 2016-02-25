@@ -17,8 +17,8 @@ var MonitoringErrorCodes = map[string]int{
 	"PERMISSIONERROR":    126, // not executable, etc
 	"RUNTIMEERROR":       42,  // self explantory
   "DEBUG":              37,  // exit w/ debugging output
-	"OK":                 0,   // everything is light and bright
+	"OK":                 0,   // “I'd far rather be happy than right any day.”
 	"WARNING":            1,   // this kinda sucks but don't get out of bed to deal with it
-	"CRITICAL":           2,   // get your ass out of bed you lazy idiot
-	"UNKNOWN":            3,   // Human sacrifice! Dogs and cats living together! Mass hysteria!
+	"CRITICAL":           2,   // “The ships hung in the sky in much the same way that bricks don't.” 
+	"UNKNOWN":            3,   // Would it save you a lot of time if I just gave up and went mad now?
 }
