@@ -11,6 +11,7 @@
   "version": [
     "make version"
   ],
+  "commit": ["make null"],
   "clean": [
     "make clean"
   ]
