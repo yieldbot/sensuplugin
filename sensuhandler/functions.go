@@ -72,14 +72,14 @@ func DefineSensuEnv(env string) string {
 
 // DefineStatus converts the check result status from an integer to a string.
 func DefineStatus(status int) string {
-  err_code := "UNDEFINED_STATUS"
+	err_code := "UNDEFINED_STATUS"
 
-  for k, v := range sensuutil.MonitoringErrorCodes {
-    if status == v {
-      err_code = k
-    }
-  }
-  return err_code
+	for k, v := range sensuutil.MonitoringErrorCodes {
+		if status == v {
+			err_code = k
+		}
+	}
+	return err_code
 }
 
 // CreateCheckName creates a monitor name that is easily searchable in ES using different

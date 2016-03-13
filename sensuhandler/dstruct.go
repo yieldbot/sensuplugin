@@ -41,4 +41,3 @@ type EnvDetails struct {
 		Hostname    string `json:"hostname"`
 	}
 }
-

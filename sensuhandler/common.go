@@ -8,10 +8,11 @@
 
 package sensuhandler
 
+// Notification Color is a set of colors used by all handlers to provide a rich
+// notification.
 var NotificationColor = map[string]string{
-      "green": "#33CC33",
-      "orange": "#FFFF00",
-      "red":   "#FF0000",
-      "yellow": "#FF6600",
+	"green":  "#33CC33",
+	"orange": "#FFFF00",
+	"red":    "#FF0000",
+	"yellow": "#FF6600",
 }
-
