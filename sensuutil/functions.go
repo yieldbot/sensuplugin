@@ -21,14 +21,14 @@ func EHndlr(e error) {
 	}
 }
 
-// Exit method for all sensu checks that will print the output and desired
-// exit code
-// To use you want to pass it in the state you want and an opitional text you would want outputed with the check.
+// Exit method for all sensu checks that will print the output and desired exit code
+// To use, pass it in the state you want and an optional text you would want outputted with the check.
 //Ex. sensuutil.Exit("ok", "Everything is fine")
 //    sensuutil.Exit("critical", variable)
 // A list of error codes currently supported can be found in common.go
 func Exit(args ...interface{}) {
 	// YELLOW need to make sure that condition exists
+	// panic is bad
 	var exitCode int
 	output := ""
 
@@ -41,7 +41,7 @@ func Exit(args ...interface{}) {
 		case 0: // name
 			param, ok := p.(string)
 			if !ok {
-				panic("1st parameter not type string.")
+				panic("1st paramete not type string.")
 			}
 
 			for k := range MonitoringErrorCodes {
@@ -50,7 +50,7 @@ func Exit(args ...interface{}) {
 				}
 			}
 
-		case 1: // x
+		case 1: // optional text
 			param, ok := p.(string)
 			if !ok {
 				panic("2nd parameter not type string.")
@@ -58,7 +58,7 @@ func Exit(args ...interface{}) {
 			output = param
 
 		default:
-			panic("Wrong parameter count.")
+			panic("Incorrect parameters")
 		}
 	}
 
