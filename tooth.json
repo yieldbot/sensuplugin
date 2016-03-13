@@ -7,11 +7,12 @@
   "build": [
     "make srcdir=./sensuutil pkg=sensuplugin && make srcdir=./sensuhandler pkg=sensuplugin && make srcdir=./sensucheck pkg=sensuplugin"
   ],
-  "bump": ["make null"],
+  "bump": [
+    "make null"
+  ],
   "version": [
     "make version"
   ],
-  "commit": ["make null"],
   "clean": [
     "make clean"
   ]
