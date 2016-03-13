@@ -124,9 +124,9 @@ all: clean build dist
 build: pre-build
 	  @export PATH=$$PATH:$$GOROOT/bin:$$GOBIN; \
 	  if [ -e ./cmd ]; then \
-      go build -o ./bin/$(pkg) --ldflags "-linkmode external -extldflags '-static'" $(srcdir); \
+      go godep build -o ./bin/$(pkg) --ldflags "-linkmode external -extldflags '-static'" $(srcdir); \
 	  else \
-	    go build --ldflags "-linkmode external -extldflags '-static'" $(srcdir); \
+	    go godep build --ldflags "-linkmode external -extldflags '-static'" $(srcdir); \
 	  fi; \
 
 # delete all existing binaries and directories used for building
@@ -193,10 +193,10 @@ maintainer-clean:
 # needed for Jenkins builds due to shared Workspaces
 pre-build:
 	echo "Creating proper build environment and dependency directory structure"; \
-	echo "Creating $$GOPATH/src/github.com/yieldbot/sensuplugin"; \
-	mkdir -p $$GOPATH/src/github.com/yieldbot/sensupluginfile; \
-	echo "Copying dependencies from $$(pwd) -> $$GOPATH/src/github.com/yieldbot/sensuplugin"; \
-	cp -R ./* $$GOPATH/src/github.com/yieldbot/sensupluginfile; \
+	echo "Creating $$GOPATH/src/github.com/yieldbot/$(pkg)"; \
+	mkdir -p $$GOPATH/src/github.com/yieldbot/$(pkg); \
+	echo "Copying dependencies from $$(pwd) -> $$GOPATH/src/github.com/yieldbot/$(pkg)"; \
+	cp -R ./* $$GOPATH/src/github.com/yieldbot/$(pkg); \
 
 pre-dist:
 	@if [ -e ./cmd/ ]; then \
