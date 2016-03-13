@@ -190,6 +190,9 @@ lint:
 maintainer-clean:
 	@echo "this needs to be implemented"
 
+null:
+	@echo "move along"
+
 # needed for Jenkins builds due to shared Workspaces
 pre-build:
 	echo "Creating proper build environment and dependency directory structure"; \
