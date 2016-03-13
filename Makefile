@@ -121,7 +121,7 @@ default: all
 all: clean build dist
 
 # Build a binary from the given package and drop it into the local bin
-build: 
+build: pre-build
 	  @export PATH=$$PATH:$$GOROOT/bin:$$GOBIN; \
 	  if [ -e ./cmd ]; then \
       go build -o ./bin/$(pkg) --ldflags "-linkmode external -extldflags '-static'" $(srcdir); \
