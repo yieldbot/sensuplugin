@@ -1,5 +1,0 @@
-{
-	"ImportPath": "github.com/yieldbot/sensuplugin/sensucheck",
-	"GoVersion": "go1.5",
-	"Deps": []
-}
