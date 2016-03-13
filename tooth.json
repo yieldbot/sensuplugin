@@ -1,4 +1,8 @@
 {
+  "_comments": [
+    "When you want to push a new commit back to GH you will need to add 'version' to the commit block.",
+    "If nothing is there then nothing will be pushed back."
+  ]
   "coordinates": {
     "org": "sensuplugin",
     "name": "sensuplugin",
@@ -6,6 +10,9 @@
   },
   "build": [
     "make srcdir=./sensuutil pkg=sensuplugin && make srcdir=./sensuhandler pkg=sensuplugin && make srcdir=./sensucheck pkg=sensuplugin"
+  ],
+  "bump": [
+    "make version_bump"
   ],
   "version": [
     "make version"

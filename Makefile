@@ -233,6 +233,11 @@ version:
 		echo "No version file found"; \
 	fi; \
 
+version_bump:
+	@ver_f=$$(awk -F. '{ print $$1 "."$$2 "." }' version); \
+	  ver_p=$$(awk -F. '{ print ++$$NF }' version); \
+		echo $$ver_f$$ver_p > version
+
 # run go vet
 vet:
 	@export PATH=$$PATH:$$GOROOT/bin:$$GOBIN; \
