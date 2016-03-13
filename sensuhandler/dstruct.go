@@ -42,29 +42,3 @@ type EnvDetails struct {
 	}
 }
 
-// // UserEvent holds generic user data that is entered via an input file declared on the commndline.
-// type UserEvent struct {
-// 	Product   string
-// 	Timestamp int64
-// 	Data      string
-// }
-
-// Data structure for holding product configuration. Each product will have its own configuration. Then we just
-// call that product on the commandline. Every value here is also represented via a commandline flag that will take preceence.
-// type Config_Details struct {
-// 	Sensu struct {
-// 	}
-// 	Elasticsearch struct {
-// 		index []string
-// 	}
-// 	Slack struct {
-// 		Channel []string
-// 		Token   string
-// 	}
-// 	Pagerduty struct {
-// 	}
-// 	Statsd struct {
-// 	}
-// 	Mail struct {
-// 	}
-// }
