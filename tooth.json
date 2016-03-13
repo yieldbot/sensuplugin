@@ -15,5 +15,6 @@
   ],
   "clean": [
     "make clean"
-  ]
+  ],
+  "commit":[]
 }
