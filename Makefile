@@ -2,7 +2,7 @@ SHELL = /bin/sh
 
 # This is a general purpose Makefile for building golang projects
 #
-# version 0.0.12
+# version 0.0.14
 # Copyright (c) 2015 Yieldbot
 
 .PHONY: all build bump_version clean coverage dist format info install lint maintainer-clean test test_all updatedeps version vet
