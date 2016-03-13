@@ -124,9 +124,9 @@ all: clean build dist
 build: pre-build
 	  @export PATH=$$PATH:$$GOROOT/bin:$$GOBIN; \
 	  if [ -e ./cmd ]; then \
-      go godep build -o ./bin/$(pkg) --ldflags "-linkmode external -extldflags '-static'" $(srcdir); \
+      godep go build -o ./bin/$(pkg) --ldflags "-linkmode external -extldflags '-static'" $(srcdir); \
 	  else \
-	    go godep build --ldflags "-linkmode external -extldflags '-static'" $(srcdir); \
+	    godep go build --ldflags "-linkmode external -extldflags '-static'" $(srcdir); \
 	  fi; \
 
 # delete all existing binaries and directories used for building
