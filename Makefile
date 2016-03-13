@@ -20,12 +20,17 @@ endif
 
 # Set the package to build.
 ifndef pkg
-pkg := $(shell pwd | awk -F/ '{print $$NF}')
+  pkg := $(shell pwd | awk -F/ '{print $$NF}')
+endif
+
+# set the directory to build. Mostly useful only when building librarys
+ifndef srcdir
+	srcdir = .
 endif
 
 # Set the path that the tarball will be dropped into.
 ifndef targetdir
-targetdir = pkg
+  targetdir = pkg
 endif
 
 # Set where the local binary should be installed to.
@@ -95,6 +100,10 @@ infodir Set the location for installing GNU info files.
 pkg Set the package to build. Ex. `make pkg="bobogono" build`
         Default: current working directory
 
+srcdir Set the directory that the sources are in. Mostly only useful when building libraries or when
+       the code does not live at the repo root. 
+			 Default: .
+
 target Set the path that the tarball will be dropped into. DrTeeth will look in
        ./target by default but golang will put it into ./pkg if left to itself.
        Default: target
@@ -115,9 +124,9 @@ all: clean format build dist
 build:
 	  @export PATH=$$PATH:$$GOROOT/bin:$$GOBIN; \
 	  if [ -e ./cmd ]; then \
-      godep go build -o ./bin/$(pkg) --ldflags "-linkmode external -extldflags '-static'"; \
+      godep go build -o ./bin/$(pkg) --ldflags "-linkmode external -extldflags '-static'" $(srcdir); \
 	  else \
-	    godep go build --ldflags "-linkmode external -extldflags '-static'"; \
+	    godep go build --ldflags "-linkmode external -extldflags '-static'" $(srcdir); \
 	  fi; \
 
 # delete all existing binaries and directories used for building
@@ -218,7 +227,7 @@ version:
 		ver=$$(awk '{ print $$NF }' ./version) ;\
     echo "{\"version\":\"$$ver\"}"; \
 	else \
-		@echo "No version file found"; \
+		echo "No version file found"; \
 	fi; \
 
 # run go vet
