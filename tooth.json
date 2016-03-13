@@ -7,7 +7,7 @@
   "build": [
     "make srcdir=./sensuutil pkg=sensuplugin && make srcdir=./sensuhandler pkg=sensuplugin && make srcdir=./sensucheck pkg=sensuplugin"
   ],
-  "bump": ["ver_f=$(awk -F. '{ print $1\".\"$2\".\"  }' version); ver_p=$(awk -F. '{ print ++$NF  }' version); echo $ver_f$ver_p > version"],
+  "bump": [""],
   "version": [
     "make version"
   ],
