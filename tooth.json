@@ -5,7 +5,7 @@
     "type": "golang"
   },
   "build": [
-    "make srcdir=./sensuutil all && make srcdir=./sensuhandler && make srcdir=./sensucheck"
+    "make srcdir=./sensuutil pkg=sensuplugin && make srcdir=./sensuhandler pkg=sensuplugin && make srcdir=./sensucheck pkg=sensuplugin"
   ],
   "version": [
     "make version"
