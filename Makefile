@@ -41,7 +41,7 @@ endif
 define help
 --Targets--
 
-all: Attempt to run gofmt and if it passes build any binaries or libraries. If the build completes 
+all: Attempt to run gofmt and if it passes build any binaries or libraries. If the build completes
 	   without errors a taball is created and dropped into the targetdir for a binary. This is
 	   the default Yieldbot target for the golang build pipeline. Ex. `make all`
 
@@ -101,7 +101,7 @@ pkg Set the package to build. Ex. `make pkg="bobogono" build`
         Default: current working directory
 
 srcdir Set the directory that the sources are in. Mostly only useful when building libraries or when
-       the code does not live at the repo root. 
+       the code does not live at the repo root.
 			 Default: .
 
 target Set the path that the tarball will be dropped into. DrTeeth will look in
@@ -121,7 +121,7 @@ default: all
 all: clean build dist
 
 # Build a binary from the given package and drop it into the local bin
-build: pre-build
+build:
 	  @export PATH=$$PATH:$$GOROOT/bin:$$GOBIN; \
 	  if [ -e ./cmd ]; then \
       godep go build -o ./bin/$(pkg) --ldflags "-linkmode external -extldflags '-static'" $(srcdir); \
@@ -141,7 +141,7 @@ coverage:
 dep_tree: updatedeps
 	rm -rf Godeps
 	godep save
-	
+
 # pack everything up neatly
 dist: build pre-dist
 	@if [ -e ./bin ]; then \
@@ -242,4 +242,3 @@ version_bump:
 vet:
 	@export PATH=$$PATH:$$GOROOT/bin:$$GOBIN; \
 	go vet ./...
-
