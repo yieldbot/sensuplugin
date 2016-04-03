@@ -11,11 +11,41 @@ package sensuhandler
 
 import (
 	"encoding/json"
-	"github.com/yieldbot/sensuplugin/sensuutil"
 	"io/ioutil"
 	"os"
 	"strings"
+
+	"github.com/yieldbot/sensuplugin/sensuutil"
 )
+
+// AcquireUchiwa returns an uchiwa url for the node alerting
+func AcquireUchiwa(h string, env interface{}) string {
+	var tags string
+	var dc string
+
+	if e, ok := env.(EnvDetails); ok {
+		tags = e.Sensu.Consul.Tags
+		dc = e.Sensu.Consul.Datacenter
+	}
+
+	// config := api.DefaultConfig()
+	// config.Address = "localhost:8500"
+	// config.Datacenter = dc
+
+	// client, err := api.NewClient(config)
+	// if err != nil {
+	// 	panic(err)
+	// }
+	//
+	// services, _, _ := client.Catalog().Service("uchiwa", tags, nil)
+	//
+	// for _, s := range services {
+	// 	name = s.ServiceName
+	// }
+	url := "https://" + tags + ".uchiwa.service" + "." + dc + ".consul/#/client/" + dc + "/" + h
+
+	return url
+}
 
 // CleanOutput will shorten the output to a more manageable length
 func CleanOutput(output string) string {
@@ -72,14 +102,14 @@ func DefineSensuEnv(env string) string {
 
 // DefineStatus converts the check result status from an integer to a string.
 func DefineStatus(status int) string {
-	err_code := "UNDEFINED_STATUS"
+	eCode := "UNDEFINED_STATUS"
 
 	for k, v := range sensuutil.MonitoringErrorCodes {
 		if status == v {
-			err_code = k
+			eCode = k
 		}
 	}
-	return err_code
+	return eCode
 }
 
 // CreateCheckName creates a monitor name that is easily searchable in ES using different
