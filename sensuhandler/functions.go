@@ -28,20 +28,6 @@ func AcquireUchiwa(h string, env interface{}) string {
 		dc = e.Sensu.Consul.Datacenter
 	}
 
-	// config := api.DefaultConfig()
-	// config.Address = "localhost:8500"
-	// config.Datacenter = dc
-
-	// client, err := api.NewClient(config)
-	// if err != nil {
-	// 	panic(err)
-	// }
-	//
-	// services, _, _ := client.Catalog().Service("uchiwa", tags, nil)
-	//
-	// for _, s := range services {
-	// 	name = s.ServiceName
-	// }
 	url := "https://" + tags + ".uchiwa.service" + "." + dc + ".consul/#/client/" + dc + "/" + h
 
 	return url
