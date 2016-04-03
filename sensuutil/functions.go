@@ -12,33 +12,12 @@ import (
 	"fmt"
 	"os"
 	"strings"
-
-	"github.com/hashicorp/consul/api"
 )
 
 // EHndlr is for generic error handling in all Yieldbot monitoring packages.
 func EHndlr(e error) {
 	if e != nil {
 		fmt.Printf("ERROR: %v", e)
-	}
-}
-
-// AcquireSensuClient will return the address for the best possible sensu-client
-// to connect to.
-func AcquireSensuClient() {
-	config := api.DefaultConfig()
-	config.Address = "core-monitoring-general-rabbitmq-0:8500"
-	config.Datacenter = "us-atlanta-1"
-
-	client, err := api.NewClient(api.DefaultConfig())
-	if err != nil {
-		panic(err)
-	}
-
-	services, _, _ := client.Catalog().Service("sensu-client", "general", nil)
-
-	for _, s := range services {
-		fmt.Println(s)
 	}
 }
 
