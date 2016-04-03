@@ -39,5 +39,9 @@ type EnvDetails struct {
 		Environment string `json:"environment"`
 		FQDN        string `json:"fqdn"`
 		Hostname    string `json:"hostname"`
+		Consul      struct {
+			Tags       string `json:"tags"`
+			Datacenter string `json:"datacenter"`
+		}
 	}
 }
