@@ -6,7 +6,7 @@
     "tag": false
   },
   "build": [
-    "make pkg=sensuplugin pre-build && make pkg=sensuplugin all"
+    "make pkg=sensuplugin pre-build && make pkg=sensuplugin srcdir=./sensuutil all && make pkg=sensuplugin srcdir=./sensuhandler all"
   ],
   "bump": [
     "make version_bump"
@@ -22,6 +22,7 @@
     "If nothing is there then nothing will be pushed back to GH or artifactory."
   ],
   "commit": [
+    "version"
   ],
   "publish": [
   ]

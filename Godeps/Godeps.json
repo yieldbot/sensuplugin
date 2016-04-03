@@ -1,5 +1,6 @@
 {
 	"ImportPath": "github.com/yieldbot/sensuplugin",
-	"GoVersion": "go1.6",
+	"GoVersion": "go1.5",
+	"GodepVersion": "v60",
 	"Deps": []
 }
