@@ -9,16 +9,21 @@
 package sensuutil
 
 import (
+  "github.com/op/go-logging"
 	"fmt"
 	"os"
 	"strings"
 )
 
-// EHndlr is for generic error handling in all Yieldbot monitoring packages.
-func EHndlr(e error) {
-	if e != nil {
-		fmt.Printf("ERROR: %v", e)
-	}
+type Password string
+
+var Log = logging.MustGetLogger("chrony")
+var Format = logging.MustStringFormatter(
+     `%{time:15:04:05.000} ▶ %{level} %{message}`,
+)
+
+func (p Password) Redacted() interface{} {
+    return logging.Redact(string(p))
 }
 
 // Exit method for all sensu checks that will print the output and desired exit code
@@ -28,7 +33,7 @@ func EHndlr(e error) {
 // A list of error codes currently supported can be found in common.go
 func Exit(args ...interface{}) {
 	// YELLOW need to make sure that condition exists
-	// panic is bad
+	// panic is bad, need to add logging
 	var exitCode int
 	output := ""
 
@@ -41,7 +46,7 @@ func Exit(args ...interface{}) {
 		case 0: // name
 			param, ok := p.(string)
 			if !ok {
-				panic("1st paramete not type string.")
+				panic("1st parameter not type string.")
 			}
 
 			for k := range MonitoringErrorCodes {
