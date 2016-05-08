@@ -7,6 +7,12 @@
 //   for details.
 
 package sensuutil
+import  "github.com/op/go-logging"
 
 // EnvironmentFile contains environmental details generated during the Chef run by Oahi.
 const EnvironmentFile string = "/etc/sensu/conf.d/monitoring_infra.json"
+
+type Password string
+var SyslogFormat = logging.MustStringFormatter(
+     `%{time:15:04:05.000} ▶ %{level} %{message}`,
+)

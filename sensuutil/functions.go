@@ -15,12 +15,6 @@ import (
 	"strings"
 )
 
-type Password string
-
-var Log = logging.MustGetLogger("chrony")
-var Format = logging.MustStringFormatter(
-     `%{time:15:04:05.000} ▶ %{level} %{message}`,
-)
 
 func (p Password) Redacted() interface{} {
     return logging.Redact(string(p))
