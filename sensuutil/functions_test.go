@@ -3,28 +3,21 @@ package sensuutil
 import (
   "testing"
   . "github.com/smartystreets/goconvey/convey"
-  "errors"
-  "fmt"
+      "github.com/op/go-logging"
 
 )
 
-func TestEhndlr(t *testing.T) {
+func TestPassword(t *testing.T) {
 
-  Convey("When testing the printing of an error", t, func() {
-    e := errors.New("no joy")
-    Convey("If there is an error message", func() {
-      EHndlr(e)
-
-      Convey(" The output should be error", func() {
-        So(EHndlr(e), ShouldEqual, "no joy")
-        So(e, ShouldNotEqual, nil)
-        So(e, ShouldNotEqual, "")
+  Convey("When testing the redaction of a password", t, func() {
+    p := "simple"
+    Convey("If the password is 'simple'", func() {
+      out := logging.Redact(string(p))
+      Convey(" The output should be '******'", func() {
+        So(out, ShouldEqual, "******")
+        So(out, ShouldNotEqual, nil)
+        So(out, ShouldNotEqual, "simple")
       })
     })
-
-
   } )
-
-
-
 }

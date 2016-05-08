@@ -113,13 +113,13 @@ func DefineCheckStateDuration() int {
 func SetSensuEnv() *EnvDetails {
 	envFile, err := ioutil.ReadFile(sensuutil.EnvironmentFile)
 	if err != nil {
-		sensuutil.EHndlr(err)
+		panic(err)
 	}
 
 	var envDetails EnvDetails
 	err = json.Unmarshal(envFile, &envDetails)
 	if err != nil {
-		sensuutil.EHndlr(err)
+		panic(err)
 	}
 	return &envDetails
 }
@@ -128,11 +128,11 @@ func SetSensuEnv() *EnvDetails {
 func (e SensuEvent) AcquireSensuEvent() *SensuEvent {
 	results, err := ioutil.ReadAll(os.Stdin)
 	if err != nil {
-		sensuutil.EHndlr(err)
+		panic(err)
 	}
 	err = json.Unmarshal(results, &e)
 	if err != nil {
-		sensuutil.EHndlr(err)
+		panic(err)
 	}
 	return &e
 }
