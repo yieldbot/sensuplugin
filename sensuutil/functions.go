@@ -31,7 +31,7 @@ func Exit(args ...interface{}) {
 	var exitCode int
 	output := ""
 
-	if 1 > len(args) {
+	if len(args) == 0 {
 		panic("Not enough parameters.")
 	}
 
