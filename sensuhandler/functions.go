@@ -11,7 +11,6 @@ package sensuhandler
 
 import (
 	"encoding/json"
-	"fmt"
 	"io/ioutil"
 	"os"
 	"strings"
@@ -27,13 +26,6 @@ func (e EnvDetails) AcquireUchiwa(h string) string {
 
 	tags = e.Sensu.Consul.Tags
 	dc = e.Sensu.Consul.Datacenter
-	fmt.Println(e.Sensu.Consul.Tags)
-	fmt.Println(e.Sensu.Consul.Datacenter)
-
-	fmt.Println(tags)
-	fmt.Println(e)
-	fmt.Println(dc)
-	fmt.Println(h)
 
 	url := "https://" + tags + ".uchiwa.service" + "." + dc + ".consul/#/client/" + dc + "/" + h
 
