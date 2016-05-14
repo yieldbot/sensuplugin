@@ -20,15 +20,14 @@ import (
 
 // AcquireUchiwa returns an uchiwa url for the node alerting
 // func (e SensuEvent) AcquireMonitoredInstance() string {
-func (e EnvDetails) AcquireUchiwa(h string) string {
+func (e EnvDetails) AcquireUchiwa(h string, c string) string {
 	var tags string
 	var dc string
 
 	tags = e.Sensu.Consul.Tags
 	dc = e.Sensu.Consul.Datacenter
 
-	url := "https://" + tags + ".uchiwa.service" + "." + dc + ".consul/#/client/" + dc + "/" + h
-
+	url := "https://" + tags + ".uchiwa.service" + "." + dc + ".consul/#/client/" + dc + "/" + h + "?check=" + c
 	return url
 }
 
