@@ -10,33 +10,33 @@ package sensuhandler
 
 // SensuEvent holds Sensu generated check results.
 type SensuEvent struct {
-	ID          string
-	Action      string
-	Timestamp   int64
-	Occurrences int
+	ID          string `json:"id"`
+	Action      string `json:"action"`
+	Timestamp   int64  `json:"timestamp"`
+	Occurrences int    `json:"occurrences"`
 	Client      struct {
-		Name          string
-		Address       string
-		Subscriptions []string
-		Timestamp     int64
-		Version       string
-		Environment   string
+		Name          string   `json:"name"`
+		Address       string   `json:"address"`
+		Subscriptions []string `json:"subscriptions"`
+		Timestamp     int64    `json:"timestamp"`
+		Version       string   `json:"version"`
+		Environment   string   `json:"environment"`
 	}
 	Check struct {
-		Source      string
-		Name        string
-		Issued      int64
-		Subscribers []string
-		Interval    int
-		Command     string
-		Output      string
-		Status      int
-		Handler     string
-		History     []string
-		Tags        []string
+		Source      string   `json:"source"`
+		Name        string   `json:"name"`
+		Issued      int64    `json:"issued"`
+		Subscribers []string `json:"subscribers"`
+		Interval    int      `json:"interval"`
+		Command     string   `json:"command"`
+		Output      string   `json:"output"`
+		Status      int      `json:"status"`
+		Handler     string   `json:"handler"`
+		History     []string `json:"history"`
+		Tags        []string `json:"tags"`
 		Thresholds  struct {
-			Critical int
-			Warning  int
+			Critical int `json:"critical"`
+			Warning  int `json:"warning"`
 		}
 	}
 }
