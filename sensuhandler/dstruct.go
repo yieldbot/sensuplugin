@@ -10,13 +10,17 @@ package sensuhandler
 
 // SensuEvent holds Sensu generated check results.
 type SensuEvent struct {
+	ID          string
 	Action      string
+	Timestamp   int64
 	Occurrences int
 	Client      struct {
 		Name          string
 		Address       string
 		Subscriptions []string
 		Timestamp     int64
+		Version       string
+		Environment   string
 	}
 	Check struct {
 		Source      string
@@ -30,6 +34,10 @@ type SensuEvent struct {
 		Handler     string
 		History     []string
 		Tags        []string
+		Thresholds  struct {
+			Critical int
+			Warning  int
+		}
 	}
 }
 

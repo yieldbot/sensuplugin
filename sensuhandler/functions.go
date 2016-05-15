@@ -11,8 +11,10 @@ package sensuhandler
 
 import (
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"os"
+	"strconv"
 	"strings"
 
 	"github.com/yieldbot/sensuplugin/sensuutil"
@@ -48,6 +50,30 @@ func (e SensuEvent) AcquireMonitoredInstance() string {
 		return e.Check.Source
 	}
 	return e.Client.Name
+}
+
+// AcquireThreshold will get the current threshold for the alert state.
+func (e SensuEvent) AcquireThreshold() string {
+	var s string
+	fmt.Printf("Critical Threshold: %v Warning Threshold: %v", e.Check.Thresholds.Critical, e.Check.Thresholds.Warning)
+	switch e.Check.Status {
+	case 0:
+		return ""
+	case 1:
+		if e.Check.Thresholds.Warning != 0 {
+			s = strconv.Itoa(e.Check.Thresholds.Warning)
+		} else {
+			s = ""
+		}
+		return s
+	case 2:
+		s := strconv.Itoa(e.Check.Thresholds.Critical)
+		return s
+	case 3:
+		return ""
+	default:
+		return "No threshold information"
+	}
 }
 
 // SetColor is used to set the correct notification color for a given status. By setting it in a single place for all alerts
