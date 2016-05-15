@@ -34,6 +34,7 @@ type SensuEvent struct {
 		Handler     string   `json:"handler"`
 		History     []string `json:"history"`
 		Tags        []string `json:"tags"`
+		Playbook    string   `json:"playbook"`
 		Thresholds  struct {
 			Critical int `json:"critical"`
 			Warning  int `json:"warning"`
