@@ -65,39 +65,29 @@ func (e SensuEvent) AcquireThreshold() string {
 
 	// YELLOW
 	// refactor this so the case is dynamic
-
-	// for k, v := range sensuutil.MonitoringErrorCodes {
-	// 	if status == v {
-	// 		eCode = k
-	// 	}
-	// }
-	//
-	for _, v := range sensuutil.MonitoringErrorCodes {
-		switch e.Check.Status {
-		case v: // this is stupid and ugly, fix it
-			if w != "" {
-				if c != "" {
-					return "Warning Threshold: " + w + " Critical Threshold: " + c
-				}
+	switch e.Check.Status {
+	case 0: // this is stupid and ugly, fix it
+		if w != "" {
+			if c != "" {
+				return "Warning Threshold: " + w + " Critical Threshold: " + c
 			}
-			return "No " + DefineStatus(v) + " threshold set"
-		// case 1:
-		// 	if w != "" {
-		// 		return "Warning Threshold: " + w
-		// 	}
-		// 	return "No " + DefineStatus(2) + " threshold set"
-		// case 2:
-		// 	if c != "" {
-		// 		return "Critical Threshold: " + c
-		// 	}
-		// 	return "No " + DefineStatus(2) + " threshold set"
-		// case 3:
-		// 	return "No " + DefineStatus(2) + " threshold set"
-		default:
-			return "No threshold information"
 		}
+		return "No thresholds set"
+	case 1:
+		if w != "" {
+			return "Warning Threshold: " + w
+		}
+		return "No " + DefineStatus(1) + " threshold set"
+	case 2:
+		if c != "" {
+			return "Critical Threshold: " + c
+		}
+		return "No " + DefineStatus(2) + " threshold set"
+	case 3:
+		return "No " + DefineStatus(3) + " threshold set"
+	default:
+		return "No threshold information"
 	}
-	return "Unknown Error Code"
 }
 
 // SetColor is used to set the correct notification color for a given status. By setting it in a single place for all alerts
