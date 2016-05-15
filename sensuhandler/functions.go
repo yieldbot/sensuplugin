@@ -11,7 +11,6 @@ package sensuhandler
 
 import (
 	"encoding/json"
-	"fmt"
 	"io/ioutil"
 	"os"
 	"strconv"
@@ -54,23 +53,38 @@ func (e SensuEvent) AcquireMonitoredInstance() string {
 
 // AcquireThreshold will get the current threshold for the alert state.
 func (e SensuEvent) AcquireThreshold() string {
-	var s string
-	fmt.Printf("Critical Threshold: %v Warning Threshold: %v", e.Check.Thresholds.Critical, e.Check.Thresholds.Warning)
+	var w string
+	var c string
+
+	if e.Check.Thresholds.Warning != -1 {
+		w = strconv.Itoa(e.Check.Thresholds.Warning)
+	}
+	if e.Check.Thresholds.Critical != -1 {
+		c = strconv.Itoa(e.Check.Thresholds.Critical)
+	}
+
+	// YELLOW
+	// refactor this so the case is dynamic
 	switch e.Check.Status {
-	case 0:
-		return ""
-	case 1:
-		if e.Check.Thresholds.Warning != 0 {
-			s = strconv.Itoa(e.Check.Thresholds.Warning)
-		} else {
-			s = ""
+	case 0: // this is stupid and ugly, fix it
+		if w != "" {
+			if c != "" {
+				return "Warning Threshold: " + w + "Critical Threshold: " + c
+			}
 		}
-		return s
+		return "No thresholds set"
+	case 1:
+		if w != "" {
+			return "Warning Threshold: " + w
+		}
+		return "No " + DefineStatus(2) + " threshold set"
 	case 2:
-		s := strconv.Itoa(e.Check.Thresholds.Critical)
-		return s
+		if c != "" {
+			return "Critical Threshold: " + c
+		}
+		return "No " + DefineStatus(2) + " threshold set"
 	case 3:
-		return ""
+		return "No " + DefineStatus(2) + " threshold set"
 	default:
 		return "No threshold information"
 	}
