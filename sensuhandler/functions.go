@@ -73,14 +73,14 @@ func (e SensuEvent) AcquireThreshold() string {
 		if w != "" {
 			return "Warning Threshold: " + w
 		}
-		return "No " + DefineStatus(1) + " threshold set"
+		return "No " + strings.ToLower(DefineStatus(1)) + " threshold set"
 	case 2:
 		if c != "" {
 			return "Critical Threshold: " + c
 		}
-		return "No " + DefineStatus(2) + " threshold set"
+		return "No " + strings.ToLower(DefineStatus(2)) + " threshold set"
 	case 3:
-		return "No " + DefineStatus(3) + " threshold set"
+		return "No " + strings.ToLower(DefineStatus(3)) + " threshold set"
 	default:
 		return "No threshold information"
 	}
