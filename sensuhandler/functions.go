@@ -28,7 +28,7 @@ func (e EnvDetails) AcquireUchiwa(h string, c string) string {
 	tags = e.Sensu.Consul.Tags
 	dc = e.Sensu.Consul.Datacenter
 
-	url := "https://" + tags + ".uchiwa.service" + "." + dc + ".consul/#/client/" + dc + "/" + h + "?check=" + c
+	url := "https://" + tags + ".uchiwa.service" + "." + dc + ".consul/#/client/" + dc + "/" + h + "?check=" + c + "|" + c
 	return url
 }
 
@@ -165,7 +165,7 @@ func (e EnvDetails) SetSensuEnv() *EnvDetails {
 // AcquirePlaybook will return the check playbook
 func (e SensuEvent) AcquirePlaybook() string {
 	if e.Check.Playbook != "" {
-		return e.Check.Playbook
+		return e.Check.Playbook + "|" + e.Check.Name
 	}
 	return "No playbook is available"
 }
