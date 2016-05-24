@@ -9,15 +9,22 @@
 package sensuutil
 
 import (
-  "github.com/op/go-logging"
 	"fmt"
 	"os"
 	"strings"
+
+	"github.com/op/go-logging"
 )
 
-
 func (p Password) Redacted() interface{} {
-    return logging.Redact(string(p))
+	return logging.Redact(string(p))
+}
+
+// ConfigError is a generic message called when your config is boned.
+func ConfigError() {
+	fmt.Printf("You are missing a required configuration parameter")
+	fmt.Printf("If unsure consult the documentation for examples and requirements\n")
+	os.Exit(MonitoringErrorCodes["CONFIG_ERROR"])
 }
 
 // Exit method for all sensu checks that will print the output and desired exit code
