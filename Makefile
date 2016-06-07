@@ -143,7 +143,7 @@ default: all
 
 # build and then create a tarball in the target directory
 # basically everything needed to create a release.
-all: clean tools vendor build dist
+all: clean build dist
 
 # Build a binary from the given package and drop it into the local bin
 build:
@@ -243,16 +243,13 @@ test:
 test_all: vet lint format test
 
 tools:
-	export PATH=$$PATH:$$GOROOT/bin:$$GOBIN; \
-	go get -u github.com/spf13/cobra/cobra; \
-	go get -u github.com/yieldbot/sensuplugin/sensuutil; \
-	go get -u github.com/golang/lint/golint; \
-	go get -u github.com/kardianos/govendor; \
-	go get -u github.com/Sirupsen/logrus; \
-
+	go get -u github.com/spf13/cobra/cobra
+	go get -u github.com/yieldbot/sensuplugin/sensuutil
+	go get -u github.com/golang/lint/golint
+	go get -u github.com/kardianos/govendor
+	go get -u github.com/Sirupsen/logrus
 vendor:
-	@export PATH=$$PATH:$$GOROOT/bin:$$GOBIN; \
-	govendor sync
+	@govendor sync
 
 # print out the current version of the project
 version:
