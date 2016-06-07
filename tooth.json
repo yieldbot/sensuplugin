@@ -9,7 +9,6 @@
     "type": "golang"
   },
   "build": [
-    "make pkg=sensuplugin pre-build && make pkg=sensuplugin all"
   ],
   "bump": [
     "make version_bump"
