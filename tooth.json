@@ -1,12 +1,15 @@
 {
+  "_comments": [
+    "When you want to push a new commit back to GH you will need to add 'version/version.go' to the commit block.",
+    "If nothing is there then nothing will be pushed back."
+  ],
   "coordinates": {
     "org": "sensuplugin",
     "name": "sensuplugin",
-    "type": "golang",
-    "tag": false
+    "type": "golang"
   },
   "build": [
-    "make pkg=sensuplugin pre-build && make pkg=sensuplugin srcdir=./sensuutil all && make pkg=sensuplugin srcdir=./sensuhandler all"
+    "make pkg=sensuplugin pre-build && make pkg=sensuplugin all"
   ],
   "bump": [
     "make version_bump"
@@ -17,13 +20,7 @@
   "clean": [
     "make clean"
   ],
-  "_comments": [
-    "When you want to push a new commit back to GH  and a release to artifactory you will need to add \"version\" to the commit block below, preserving the quotes.",
-    "If nothing is there then nothing will be pushed back to GH or artifactory."
-  ],
   "commit": [
-    "version"
-  ],
-  "publish": [
+    "version/version.go"
   ]
 }
