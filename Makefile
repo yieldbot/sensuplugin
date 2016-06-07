@@ -243,11 +243,12 @@ test:
 test_all: vet lint format test
 
 tools:
-	go get -u github.com/spf13/cobra/cobra
-	go get -u github.com/yieldbot/sensuplugin/sensuutil
-	go get -u github.com/golang/lint/golint
-	go get -u github.com/kardianos/govendor
-	go get -u github.com/Sirupsen/logrus
+	export PATH=$$PATH:$$GOROOT/bin:$$GOBIN; \
+	go get -u github.com/spf13/cobra/cobra; \
+	go get -u github.com/yieldbot/sensuplugin/sensuutil; \
+	go get -u github.com/golang/lint/golint; \
+	go get -u github.com/kardianos/govendor; \
+	go get -u github.com/Sirupsen/logrus; \
 
 vendor:
 	@govendor sync
