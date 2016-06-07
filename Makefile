@@ -143,7 +143,7 @@ default: all
 
 # build and then create a tarball in the target directory
 # basically everything needed to create a release.
-all: clean vendor build dist
+all: clean tools vendor build dist
 
 # Build a binary from the given package and drop it into the local bin
 build:
