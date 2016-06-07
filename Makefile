@@ -251,7 +251,8 @@ tools:
 	go get -u github.com/Sirupsen/logrus; \
 
 vendor:
-	@govendor sync
+	@export PATH=$$PATH:$$GOROOT/bin:$$GOBIN; \
+	govendor sync
 
 # print out the current version of the project
 version:
