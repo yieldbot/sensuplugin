@@ -90,9 +90,9 @@ build: pre-build build-linux build-darwin
 
 build-actual:
 	@if [ "$(target_os)" == "linux" ]; then \
-		GOOS=$(target_os) GOARCH=$(target_arch) go build -o ./bin/$(pkg)-$(target_os) --ldflags "$(EXTLDFLAGS)"; \
+		GOOS=$(target_os) GOARCH=$(target_arch) go build --ldflags "$(EXTLDFLAGS)" ./...; \
 	else \
-		GOOS=$(target_os) GOARCH=$(target_arch) go build -o ./bin/$(pkg)-$(target_os); \
+		GOOS=$(target_os) GOARCH=$(target_arch) go build ./...; \
 	fi;
 
 build-darwin:
